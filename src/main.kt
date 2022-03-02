@@ -13,12 +13,16 @@ fun main() {
     accountMaria.balance = 450.0
 
     printAccountInfo(accountJohn)
-    deposit(accountJohn,15.0)
+    accountJohn.deposit(15.0)
+    accountJohn.withdraw(80.0)
+    accountJohn.withdraw(800.0)
     println("balance ${accountJohn.balance}")
     println()
 
     printAccountInfo(accountMaria)
-    deposit(accountMaria,60.0)
+    accountMaria.deposit(60.0)
+    accountMaria.withdraw(55.0)
+    accountMaria.withdraw(900.0)
     println("balance ${accountMaria.balance}")
 
 
@@ -96,15 +100,23 @@ fun testCopyAndReference(){
     println("account2 ${account2.owner}")
 }
 
-fun deposit(account: Account, value: Double){
-    println("After deposit...")
-    if(value > 0){
-        account.balance += value
-    }
-}
-
 class Account{
     var owner = ""
     var number = 1000
     var balance = 0.0
+
+    fun deposit(value: Double){
+        println("After deposit money... $value")
+        if(value > 0){
+            balance += value
+        }
+    }
+
+    fun withdraw(value: Double){
+        println("After withdraw money... $value")
+        if(value <= balance){
+            balance -= value
+        }
+    }
+
 }
