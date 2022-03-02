@@ -2,20 +2,7 @@ fun main() {
 
     println("Welcome to Bytebank")
 
-    var balance1 = 10.0
-    var balance2 = balance1
-    balance2 = 250.0
-    println("balance1 $balance1")
-    println("balance2 $balance2")
-
-    val account1 = Account()
-    account1.owner = "Test1"
-    val account2 = account1
-    account2.owner = "Test2"
-    println("account1 ${account1.owner}")
-    println("account2 ${account2.owner}")
-
-    /*val accountJohn = Account()
+    val accountJohn = Account()
     accountJohn.owner = "John Doe"
     accountJohn.number = 1001
     accountJohn.balance = 300.0
@@ -26,7 +13,13 @@ fun main() {
     accountMaria.balance = 450.0
 
     printAccountInfo(accountJohn)
-    printAccountInfo(accountMaria)*/
+    deposit(accountJohn,15.0)
+    println("balance ${accountJohn.balance}")
+    println()
+
+    printAccountInfo(accountMaria)
+    deposit(accountMaria,60.0)
+    println("balance ${accountMaria.balance}")
 
 
 
@@ -85,6 +78,28 @@ fun testLoops(entity: String, account: Int, amount: Double){
         println("account ${account+contador}")
         println("amount ${amount+contador}")
         contador++
+    }
+}
+
+fun testCopyAndReference(){
+    var balance1 = 10.0
+    var balance2 = balance1
+    balance2 = 250.0
+    println("balance1 $balance1")
+    println("balance2 $balance2")
+
+    val account1 = Account()
+    account1.owner = "Test1"
+    val account2 = account1
+    account2.owner = "Test2"
+    println("account1 ${account1.owner}")
+    println("account2 ${account2.owner}")
+}
+
+fun deposit(account: Account, value: Double){
+    println("After deposit...")
+    if(value > 0){
+        account.balance += value
     }
 }
 
