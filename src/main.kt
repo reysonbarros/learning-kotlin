@@ -10,9 +10,9 @@ fun main() {
     println("Initial balance ${accountJohn.balance}")
     accountJohn.deposit(100.0)
     accountJohn.withdraw(20.0)
-    if(accountJohn.transfer(30.0, accountMaria)){
+    if (accountJohn.transfer(30.0, accountMaria)) {
         println("Transfer was completed successfully")
-    }else{
+    } else {
         println("Failure during transfer. Try again!")
     }
     println()
@@ -21,9 +21,9 @@ fun main() {
     println("Initial balance ${accountMaria.balance}")
     accountMaria.deposit(300.0)
     accountMaria.withdraw(20.0)
-    if(accountMaria.transfer(10.0, accountJohn)){
+    if (accountMaria.transfer(10.0, accountJohn)) {
         println("Transfer was completed successfully")
-    }else{
+    } else {
         println("Failure during transfer. Try again!")
     }
     println()
@@ -49,21 +49,21 @@ class Account(
 
     fun deposit(value: Double){
         println("After deposit $value")
-        if(value > 0){
+        if (value > 0) {
             balance += value
         }
     }
 
     fun withdraw(value: Double){
         println("After withdraw $value")
-        if(value <= balance){
+        if (value <= balance) {
             balance -= value
         }
     }
 
     fun transfer(value: Double, destinationAccount: Account): Boolean{
         println("After transfer $value to ${destinationAccount.owner}")
-        if(value <= balance){
+        if (value <= balance) {
             balance -= value
             destinationAccount.balance += value
             return true
