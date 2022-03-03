@@ -6,16 +6,14 @@ fun main() {
     val accountJohn = Account()
     accountJohn.owner = "John Doe"
     accountJohn.number = 1001
-    accountJohn.setBalance(100.0)
 
     val accountMaria = Account()
     accountMaria.owner = "Maria Doe"
     accountMaria.number = 1002
-    accountMaria.setBalance(200.0)
 
     println("Balance Account - John")
-    println("Initial balance ${accountJohn.getBalance()}")
-    accountJohn.deposit(10.0)
+    println("Initial balance ${accountJohn.balance}")
+    accountJohn.deposit(100.0)
     accountJohn.withdraw(20.0)
     if(accountJohn.transfer(30.0, accountMaria)){
         println("Transfer was completed successfully")
@@ -25,8 +23,8 @@ fun main() {
     println()
 
     println("Balance Account - Maria")
-    println("Initial balance ${accountMaria.getBalance()}")
-    accountMaria.deposit(30.0)
+    println("Initial balance ${accountMaria.balance}")
+    accountMaria.deposit(300.0)
     accountMaria.withdraw(20.0)
     if(accountMaria.transfer(10.0, accountJohn)){
         println("Transfer was completed successfully")
@@ -43,14 +41,15 @@ fun main() {
 fun printAccountInfo(account: Account){
     println("owner ${account.owner}")
     println("account number ${account.number}")
-    println("balance ${account.getBalance()}")
+    println("balance ${account.balance}")
     println()
 }
 
 class Account{
     var owner = ""
     var number = 1000
-    private var balance = 0.0
+    var balance = 0.0
+        private set
 
     fun deposit(value: Double){
         println("After deposit $value")
@@ -74,16 +73,6 @@ class Account{
             return true
         }
         return false
-    }
-
-    fun setBalance(value: Double){
-        if(value > 0){
-            balance = value
-        }
-    }
-
-    fun getBalance(): Double{
-        return balance
     }
 
 }
