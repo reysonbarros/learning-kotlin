@@ -3,13 +3,8 @@ fun main() {
     println("Welcome to Bytebank")
     println()
 
-    val accountJohn = Account()
-    accountJohn.owner = "John Doe"
-    accountJohn.number = 1001
-
-    val accountMaria = Account()
-    accountMaria.owner = "Maria Doe"
-    accountMaria.number = 1002
+    val accountJohn = Account(number = 1001, owner = "John Doe")
+    val accountMaria = Account( owner = "Maria Doe", number = 1002)
 
     println("Balance Account - John")
     println("Initial balance ${accountJohn.balance}")
@@ -45,9 +40,10 @@ fun printAccountInfo(account: Account){
     println()
 }
 
-class Account{
-    var owner = ""
-    var number = 1000
+class Account(
+    var owner: String,
+    val number: Int
+    ){
     var balance = 0.0
         private set
 
